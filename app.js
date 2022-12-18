@@ -3,6 +3,7 @@ require("dotenv").config({ path: "./.env" });
 const express = require("express");
 
 const connectDB = require("./db/connect");
+const productsRouter = require("./routes/products");
 
 const notFoundMiddlewalre = require("./middleware/not-found");
 const errorMiddlewalre = require("./middleware/error-handler");
@@ -17,6 +18,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send('<h1>Store API</h1><a href="/api/v1/products">products</a>');
 });
+
+app.use("/api/v1/products", productsRouter);
 
 // product routes
 
